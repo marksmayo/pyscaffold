@@ -52,7 +52,6 @@ def add_log_related_args(parser: argparse.ArgumentParser):
 
 def add_default_args(parser: argparse.ArgumentParser):
     """Add the default options and arguments to the CLI parser."""
-
     # Here we can use api.DEFAULT_OPTIONS to provide the help text, but we should avoid
     # passing a `default` value to argparse, since that would shadow
     # `api.bootstrap_options`.
@@ -129,7 +128,7 @@ def add_default_args(parser: argparse.ArgumentParser):
 
     # The following are basically for the CLI options, so having a default value is OK.
     parser.add_argument(
-        "-V", "--version", action="version", version=f"PyScaffold {pyscaffold_version}"
+        "-V", "--version", action="version", version=f"PyScaffold {pyscaffold_version}",
     )
     add_log_related_args(parser)
     parser.add_argument(

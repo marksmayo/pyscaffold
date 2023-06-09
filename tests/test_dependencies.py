@@ -14,20 +14,20 @@ def test_split():
         "\n    pyscaffold>=42.1.0,<43.0"
         "\n    platformdirs==1"
         "\n    cookiecutter<8"
-        "\n    mypkg~=9.0"
+        "\n    mypkg~=9.0",
     ) == ["pyscaffold>=42.1.0,<43.0", "platformdirs==1", "cookiecutter<8", "mypkg~=9.0"]
     assert deps.split(
         "\n    pyscaffold>=42.1.0,<43.0;platformdirs==1"
-        "\n    cookiecutter<8;mypkg~=9.0\n\n"
+        "\n    cookiecutter<8;mypkg~=9.0\n\n",
     ) == ["pyscaffold>=42.1.0,<43.0", "platformdirs==1", "cookiecutter<8", "mypkg~=9.0"]
     assert deps.split(
-        "pyscaffold>=42.1.0,<43.0; platformdirs==1; cookiecutter<8; mypkg~=9.0; "
+        "pyscaffold>=42.1.0,<43.0; platformdirs==1; cookiecutter<8; mypkg~=9.0; ",
     ) == ["pyscaffold>=42.1.0,<43.0", "platformdirs==1", "cookiecutter<8", "mypkg~=9.0"]
     assert deps.split(
-        "\n    pyscaffold>=42.1.0,<43.0;python_version>='3.4'; platformdirs==1"
+        "\n    pyscaffold>=42.1.0,<43.0;python_version>='3.4'; platformdirs==1",
     ) == ["pyscaffold>=42.1.0,<43.0;python_version>='3.4'", "platformdirs==1"]
     assert deps.split(
-        "\n    pyscaffold>=42.1.0,<43.0; python_version>='3.4'; platformdirs==1"
+        "\n    pyscaffold>=42.1.0,<43.0; python_version>='3.4'; platformdirs==1",
     ) == ["pyscaffold>=42.1.0,<43.0; python_version>='3.4'", "platformdirs==1"]
 
 
@@ -39,10 +39,10 @@ def test_deduplicate():
     ]
     # duplicated => the last one wins
     assert deps.deduplicate(
-        ["pyscaffold>=4,<5", "pyscaffold~=3.2", "pyscaffold==0"]
+        ["pyscaffold>=4,<5", "pyscaffold~=3.2", "pyscaffold==0"],
     ) == ["pyscaffold==0"]
     assert deps.deduplicate(
-        ["pyscaffold==0", "pyscaffold>=4,<5", "pyscaffold~=3.2"]
+        ["pyscaffold==0", "pyscaffold>=4,<5", "pyscaffold~=3.2"],
     ) == ["pyscaffold~=3.2"]
 
 

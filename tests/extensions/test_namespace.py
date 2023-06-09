@@ -232,7 +232,7 @@ def test_updating_existing_project(tmpfolder, caplog):
 
     # when the project is updated with a namespace,
     create_project(
-        project_path="my-proj", update=True, namespace="my.ns", extensions=[Namespace()]
+        project_path="my-proj", update=True, namespace="my.ns", extensions=[Namespace()],
     )
 
     # then the package folder should be moved to a nested position,

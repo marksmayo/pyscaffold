@@ -21,7 +21,7 @@ def make_record(activity, subject, context=None, target=None, nesting=0):
             context=context,
             target=target,
             nesting=nesting,
-        )
+        ),
     )
 
 
@@ -34,7 +34,7 @@ def match_record(record, **kwargs):
 
 
 REPORT_REGEX = re.compile(
-    r"^\s*(?P<activity>\w+)(?P<spacing>\s+)(?P<content>.+)$", re.I + re.U
+    r"^\s*(?P<activity>\w+)(?P<spacing>\s+)(?P<content>.+)$", re.I + re.U,
 )
 
 
@@ -58,7 +58,7 @@ def match_report(record, message=None, **kwargs):
 
 def ansi_pattern(text):
     return r"({prefix}\[\d+m)+{text}{prefix}\[0m".format(
-        text=re.escape(text), prefix="\033"
+        text=re.escape(text), prefix="\033",
     )
 
 

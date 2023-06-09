@@ -107,7 +107,7 @@ class VenvManager:
         return self
 
     def pyscaffold_version(self):
-        version = self.venv.installed_packages().get("PyScaffold", None)
+        version = self.venv.installed_packages().get("PyScaffold")
         if version:
             return Version(version.version)
         else:
@@ -186,7 +186,7 @@ def test_inplace_update(with_coverage, venv_mgr):
     project = Path(venv_mgr.tmpdir) / "my-ns-proj"
     (
         venv_mgr.install_this_pyscaffold().putup(
-            f"--package project --namespace my_ns {project}"
+            f"--package project --namespace my_ns {project}",
         )
     )
 

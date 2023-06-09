@@ -51,7 +51,7 @@ def test_isatty_tty(fake_tty, orig_isatty):
 
 
 def test_support_with_curses_no_colorama(
-    fake_tty, curses_mock, no_colorama_mock, orig_isatty
+    fake_tty, curses_mock, no_colorama_mock, orig_isatty,
 ):
     reload(termui)  # ensure mocks side effects
     assert termui.SYSTEM_SUPPORTS_COLOR
@@ -59,7 +59,7 @@ def test_support_with_curses_no_colorama(
 
 
 def test_support_no_curses_with_colorama(
-    fake_tty, no_curses_mock, colorama_mock, orig_isatty
+    fake_tty, no_curses_mock, colorama_mock, orig_isatty,
 ):
     reload(termui)  # ensure mocks side effects
     assert termui.SYSTEM_SUPPORTS_COLOR
@@ -67,7 +67,7 @@ def test_support_no_curses_with_colorama(
 
 
 def test_support_with_curses_with_colorama(
-    fake_tty, curses_mock, colorama_mock, orig_isatty
+    fake_tty, curses_mock, colorama_mock, orig_isatty,
 ):
     reload(termui)  # ensure mocks side effects
     assert termui.SYSTEM_SUPPORTS_COLOR
@@ -75,7 +75,7 @@ def test_support_with_curses_with_colorama(
 
 
 def test_support_no_colorama_no_curses(
-    fake_tty, no_curses_mock, no_colorama_mock, orig_isatty
+    fake_tty, no_curses_mock, no_colorama_mock, orig_isatty,
 ):
     reload(termui)  # ensure mocks side effects
     assert not termui.SYSTEM_SUPPORTS_COLOR

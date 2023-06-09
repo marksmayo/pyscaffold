@@ -143,7 +143,7 @@ def define_structure(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
             opts["package"]: {
                 "__init__.py": templates.init,
                 "skeleton.py": (get_template("skeleton"), SKIP_ON_UPDATE),
-            }
+            },
         },
         # Tests
         "tests": {
@@ -169,7 +169,7 @@ def define_structure(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
 
 
 def create_structure(
-    struct: Structure, opts: ScaffoldOpts, prefix: Optional[Path] = None
+    struct: Structure, opts: ScaffoldOpts, prefix: Optional[Path] = None,
 ) -> ActionParams:
     """Manifests/reifies a directory structure in the filesystem
 
@@ -346,7 +346,7 @@ def ensure(
         Use an empty string as content to ensure a file is created empty.
     """
     return modify(
-        struct, path, lambda old, _: (old if content is None else content, file_op)
+        struct, path, lambda old, _: (old if content is None else content, file_op),
     )
 
 
@@ -409,14 +409,13 @@ def merge(old: Structure, new: Structure) -> Structure:
 
 def _inplace_merge(old: Structure, new: Structure) -> Structure:
     """Similar to :obj:`~.merge` but modifies the first dict."""
-
     for key, value in new.items():
-        old_value = old.get(key, None)
+        old_value = old.get(key)
         new_is_dict = isinstance(value, dict)
         old_is_dict = isinstance(old_value, dict)
         if new_is_dict and old_is_dict:
             old[key] = _inplace_merge(
-                cast(Structure, old_value), cast(Structure, value)
+                cast(Structure, old_value), cast(Structure, value),
             )
         elif old_value is not None and not new_is_dict and not old_is_dict:
             # both are defined and final leaves

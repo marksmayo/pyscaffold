@@ -52,7 +52,7 @@ def init_colorama():
         bool: result of check
     """
     try:
-        import colorama  # noqa
+        import colorama
 
         colorama.init()
         return True

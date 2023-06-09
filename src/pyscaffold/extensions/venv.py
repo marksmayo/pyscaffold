@@ -66,7 +66,6 @@ class Venv(Extension):
 
 def run(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
     """Action that will create a virtualenv for the project"""
-
     project_path = opts["project_path"]
     venv_path = Path(opts.get("venv", DEFAULT))
 
@@ -82,7 +81,6 @@ def run(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
 
 def install_packages(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
     """Install the specified packages inside the created venv."""
-
     packages = opts.get("venv_install")
     if not packages:
         return struct, opts
@@ -102,7 +100,6 @@ def install_packages(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
 
 def instruct_user(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
     """Simply display a message reminding the user to activate the venv."""
-
     venv = opts.get("venv", DEFAULT)
     if opts.get("pretend"):
         logger.warning(f"\nA virtual environment was created: `{venv}`.\n")
@@ -121,7 +118,7 @@ def instruct_user(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
         logger.warning(
             f"\nA virtual environment was created in the `{venv_path}` directory.\n"
             "You need to activate it (every time you open a new terminal),\n"
-            f"or call directly {python} and {pip}.\n"
+            f"or call directly {python} and {pip}.\n",
         )
 
     return struct, opts

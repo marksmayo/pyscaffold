@@ -20,7 +20,7 @@ class Cirrus(Extension):
         See :obj:`~pyscaffold.extension.Extension.augment_cli`.
         """
         parser.add_argument(
-            self.flag, help=self.help_text, nargs=0, action=include(PreCommit(), self)
+            self.flag, help=self.help_text, nargs=0, action=include(PreCommit(), self),
         )
         return self
 

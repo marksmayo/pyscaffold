@@ -50,7 +50,7 @@ class Namespace(Extension):
             list: updated list of actions
         """
         actions = self.register(
-            actions, enforce_namespace_options, after="get_default_options"
+            actions, enforce_namespace_options, after="get_default_options",
         )
 
         actions = self.register(actions, add_namespace, before="version_migration")

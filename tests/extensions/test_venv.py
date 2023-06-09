@@ -109,7 +109,7 @@ def test_creators(tmp_path_factory, creator, pretend):
             if environ.get("USING_CONDA") == "true":
                 pytest.skip(
                     "Creating venvs more than one level deep inside conda is tricky"
-                    "and error prone. Here we use at least 2 levels (tox > venv)."
+                    "and error prone. Here we use at least 2 levels (tox > venv).",
                 )
             else:
                 raise
@@ -174,7 +174,7 @@ def test_api_with_venv(tmpfolder):
     assert not venv_path.exists()
     # when the CLI is invoked with --venv and --venv-install
     api.create_project(
-        project_path="proj", extensions=[venv.Venv()], venv_install=["pytest>=6.0.0"]
+        project_path="proj", extensions=[venv.Venv()], venv_install=["pytest>=6.0.0"],
     )
     # then the venv will be created accordingly
     assert venv_path.is_dir()

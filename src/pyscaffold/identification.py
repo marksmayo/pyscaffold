@@ -22,9 +22,7 @@ def is_valid_identifier(string: str) -> bool:
     """
     if not re.match("[_A-Za-z][_a-zA-Z0-9]*$", string):
         return False
-    if keyword.iskeyword(string):
-        return False
-    return True
+    return not keyword.iskeyword(string)
 
 
 def make_valid_identifier(string: str) -> str:

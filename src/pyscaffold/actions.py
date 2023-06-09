@@ -267,7 +267,7 @@ def verify_options_consistency(struct: Structure, opts: ScaffoldOpts) -> ActionP
     """
     if not is_valid_identifier(opts["package"]):
         raise InvalidIdentifier(
-            f"Package name {opts['package']!r} is not a valid identifier."
+            f"Package name {opts['package']!r} is not a valid identifier.",
         )
 
     if opts["update"] and not opts["force"]:
@@ -295,11 +295,11 @@ def verify_project_dir(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
             raise DirectoryAlreadyExists(
                 f"Directory {project_path} already exists! Use the `update` option to "
                 "update an existing project or the `force` option to "
-                "overwrite an existing directory."
+                "overwrite an existing directory.",
             )
     elif opts["update"]:
         raise DirectoryDoesNotExist(
-            f"Project {project_path} does not exist and thus cannot be updated!"
+            f"Project {project_path} does not exist and thus cannot be updated!",
         )
     elif repo.is_git_repo(parent_path) and not opts["force"]:
         raise NestedRepository(parent_path)

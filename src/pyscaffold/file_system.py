@@ -157,7 +157,7 @@ def chmod(path: PathLike, mode: int, pretend=False) -> Path:
 
 
 def localize_path(path_string: str) -> str:
-    """Localize path for Windows, Unix, i.e. / or \\
+    r"""Localize path for Windows, Unix, i.e. / or \\
 
     Args:
         path_string (str): path using /

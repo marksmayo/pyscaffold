@@ -128,7 +128,7 @@ def install(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
 
 
 def add_instructions(
-    opts: ScaffoldOpts, content: AbstractContent, file_op: FileOp
+    opts: ScaffoldOpts, content: AbstractContent, file_op: FileOp,
 ) -> ResolvedLeaf:
     """Add pre-commit instructions to README"""
     text = structure.reify_content(content, opts)

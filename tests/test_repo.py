@@ -77,7 +77,7 @@ def test_version_of_subdir(tmpfolder):
     nested_setup_py = Path(tmpfolder, "main_project/inner_project/setup.py")
     content = nested_setup_py.read_text()
     content = content.replace(
-        "use_scm_version={", 'use_scm_version={"root": "..", "relative_to": __file__, '
+        "use_scm_version={", 'use_scm_version={"root": "..", "relative_to": __file__, ',
     )
     nested_setup_py.write_text(content)
     nested_pyproject_toml = Path(tmpfolder, "main_project/inner_project/pyproject.toml")

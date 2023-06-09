@@ -32,7 +32,7 @@ def dont_load_dotenv():
 
 
 @pytest.mark.skipif(
-    os.name == "nt", reason="pipenv fails due to colors (non-utf8) under Windows 10"
+    os.name == "nt", reason="pipenv fails due to colors (non-utf8) under Windows 10",
 )
 def test_pipenv_works_with_pyscaffold(tmpfolder, venv_path, venv_run):
     # Given a project is created with pyscaffold
@@ -82,7 +82,7 @@ def test_piptools_works_with_pyscaffold(tmpfolder, monkeypatch):
     # Given a project is created with pyscaffold
     # and it has some dependencies in setup.cfg
     create_project(
-        project_path="myproj", extensions=[Venv()], requirements=["platformdirs"]
+        project_path="myproj", extensions=[Venv()], requirements=["platformdirs"],
     )
     with tmpfolder.join("myproj").as_cwd():
         requirements_in = Path("requirements.in")
@@ -111,7 +111,7 @@ def test_piptools_works_with_pyscaffold(tmpfolder, monkeypatch):
             if "assert" in ex.output:
                 pytest.skip(
                     "pip-tools tries to assert a path is absolute, which fails "
-                    "inside test env for some OSs"
+                    "inside test env for some OSs",
                 )
             else:
                 raise

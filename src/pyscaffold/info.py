@@ -351,7 +351,7 @@ def config_dir(prog=PKG_NAME, org=None, default=RAISE_EXCEPTION):
 
 @overload
 def config_file(
-    name: str = CONFIG_FILE, prog: str = PKG_NAME, org: Optional[str] = None
+    name: str = CONFIG_FILE, prog: str = PKG_NAME, org: Optional[str] = None,
 ) -> Path:
     ...
 

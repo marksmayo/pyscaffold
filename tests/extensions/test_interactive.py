@@ -78,7 +78,7 @@ def test_example_no_value():
 
     # When an extension is available, then it should not be commented
     option_line = interactive.example_no_value(
-        parser, action, {"extensions": [Mock(flag="--option")]}
+        parser, action, {"extensions": [Mock(flag="--option")]},
     )
     assert option_line.strip() == "--option"
 
@@ -86,7 +86,7 @@ def test_example_no_value():
 def test_example_with_help():
     parser = ArgumentParser()
     action = parser.add_argument(
-        "-o", "--option", action="store_true", help="do 42 things"
+        "-o", "--option", action="store_true", help="do 42 things",
     )
     parser = ArgumentParser()
     text = """\
@@ -248,10 +248,10 @@ def test_commented_extension(monkeypatch):
     parser = ArgumentParser()
     fake_extension = Mock(flag="--option")
     action = parser.add_argument(
-        "--option", dest="extensions", action="append_const", const=fake_extension
+        "--option", dest="extensions", action="append_const", const=fake_extension,
     )
     option_line = interactive.example_no_value(
-        parser, action, {"extensions": [fake_extension]}
+        parser, action, {"extensions": [fake_extension]},
     )
     # then it should be commented in the file
     assert option_line.strip() == "# --option"
@@ -266,7 +266,7 @@ def test_ignored_extension(monkeypatch):
     parser = ArgumentParser()
     fake_extension = Mock(flag="--option")
     action = parser.add_argument(
-        "--option", dest="extensions", action="append_const", const=fake_extension
+        "--option", dest="extensions", action="append_const", const=fake_extension,
     )
     text = interactive.all_examples(parser, [action], {"extensions": [fake_extension]})
     # then it should be omitted

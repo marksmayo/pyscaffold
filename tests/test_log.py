@@ -290,7 +290,7 @@ def test_format():
     assert format("run", "ls -lf .") == "run  ls -lf ."
     assert format("run", "ls", context=parent_dir()) == "run  ls from '..'"
     assert format(
-        "copy", getcwd(), target=lp("../dir/../dir")
+        "copy", getcwd(), target=lp("../dir/../dir"),
     ) == f"copy  . to '{lp('../dir')}'"
     fmt_out = format("create", lp("my/file"), nesting=1)
     assert fmt_out == f"create    {lp('my/file')}"

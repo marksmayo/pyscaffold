@@ -64,7 +64,7 @@ licenses = {
 
 
 def get_template(
-    name: str, relative_to: Union[str, ModuleType] = __name__
+    name: str, relative_to: Union[str, ModuleType] = __name__,
 ) -> string.Template:
     """Retrieve the template by name
 
@@ -135,7 +135,6 @@ def setup_cfg(opts: ScaffoldOpts) -> str:
     Returns:
         str: file content as string
     """
-
     template = get_template("setup_cfg")
 
     # template needs single-line `description`,
@@ -174,7 +173,7 @@ def add_pyscaffold(config: ConfigUpdater, opts: ScaffoldOpts) -> ConfigUpdater:
     # Add the new extensions alongside the existing ones
     extensions = {ext.name for ext in opts.get("extensions", []) if ext.persist}
     old = cast(str, pyscaffold.get("extensions", Object(value="")).value)
-    new = list(sorted(parse_extensions(old) | extensions))
+    new = sorted(parse_extensions(old) | extensions)
     if new:
         pyscaffold.set("extensions")
         pyscaffold["extensions"].set_values(new)

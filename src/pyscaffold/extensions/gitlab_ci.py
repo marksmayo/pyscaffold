@@ -20,7 +20,7 @@ class GitLab(Extension):
         See :obj:`~pyscaffold.extension.Extension.augment_cli`.
         """
         parser.add_argument(
-            self.flag, help=self.help_text, nargs=0, action=include(PreCommit(), self)
+            self.flag, help=self.help_text, nargs=0, action=include(PreCommit(), self),
         )
         return self
 
@@ -40,7 +40,7 @@ def add_files(struct: Structure, opts: ScaffoldOpts) -> ActionParams:
         struct, opts: updated project representation and options
     """
     files: ScaffoldOpts = {
-        ".gitlab-ci.yml": (get_template("gitlab_ci"), no_overwrite())
+        ".gitlab-ci.yml": (get_template("gitlab_ci"), no_overwrite()),
     }
 
     return structure.merge(struct, files), opts

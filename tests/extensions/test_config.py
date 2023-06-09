@@ -144,7 +144,7 @@ def existing_config(file):
             tox
             cirrus
         namespace = my_namespace.my_sub_namespace
-        """
+        """,
     )
     file.write_text(text)
     return file

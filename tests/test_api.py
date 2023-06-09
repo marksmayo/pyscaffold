@@ -42,7 +42,7 @@ def test_create_project_call_extension_hooks(tmpfolder, git_mock):
 
     # when created project is called,
     create_project(
-        project_path="proj", extensions=[create_extension(pre_hook, post_hook)]
+        project_path="proj", extensions=[create_extension(pre_hook, post_hook)],
     )
 
     # then the hooks should also be called.
@@ -93,7 +93,7 @@ def test_create_project_respect_operations(tmpfolder, git_mock):
                     "file4": ("new", sou),
                     "file5": ("new", operations.create),
                     "file6": "new",
-                }
+                },
             },
         )
 
@@ -101,7 +101,7 @@ def test_create_project_respect_operations(tmpfolder, git_mock):
 
     # When the created project is called,
     create_project(
-        project_path="proj", update=True, extensions=[create_extension(add_files)]
+        project_path="proj", update=True, extensions=[create_extension(add_files)],
     )
 
     # then the NO_CREATE files should not be created,
@@ -146,7 +146,7 @@ def test_create_project_when_updating(tmpfolder, git_mock):
 
 def test_create_project_with_license(tmpfolder, git_mock):
     _, opts = get_default_options(
-        {}, dict(project_path="my-project", license="BSD-3-Clause")
+        {}, dict(project_path="my-project", license="BSD-3-Clause"),
     )
     # ^ The entire default options are needed, since template
     #   uses computed information
@@ -241,7 +241,7 @@ def with_default_config(fake_config_dir):
             namespace
             cirrus
         namespace = my_namespace.my_sub_namespace
-        """
+        """,
     )
     cfg = fake_config_dir / info.CONFIG_FILE
     cfg.write_text(config)
@@ -310,8 +310,8 @@ def with_existing_proj_config(tmp_path):
 
             [pyscaffold]
             package = super_proj
-            """
-        )
+            """,
+        ),
     )
     with chdir(str(proj)):
         yield proj

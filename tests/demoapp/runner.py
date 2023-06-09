@@ -16,11 +16,11 @@ def parse_args(args):
         :obj:`argparse.Namespace`: command line parameters
     """
     parser = argparse.ArgumentParser(
-        description="A demo application for PyScaffold's unit testing"
+        description="A demo application for PyScaffold's unit testing",
     )
     version = demoapp.__version__
     parser.add_argument(
-        "-v", "--version", action="version", version=f"demoapp {version}"
+        "-v", "--version", action="version", version=f"demoapp {version}",
     )
     opts = parser.parse_args(args)
     return opts

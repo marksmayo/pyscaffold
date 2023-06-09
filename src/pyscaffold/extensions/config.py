@@ -68,7 +68,7 @@ def save(struct: "Structure", opts: "ScaffoldOpts") -> "ActionParams":
             "# PyScaffold's configuration file, see:\n"
             "# https://pyscaffold.org/en/latest/configuration.html\n#\n"
             "# Accepted in `metadata`: author, author_email and license.\n"
-            "# Accepted in `pyscaffold`: extensions (and associated opts).\n"
+            "# Accepted in `pyscaffold`: extensions (and associated opts).\n",
         )
 
     if "metadata" not in config:

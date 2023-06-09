@@ -111,7 +111,7 @@ class ReportFormatter(Formatter):
                         self.format_context(record.context, activity),
                     ]
                     if text  # Filter empty strings
-                ]
+                ],
             )
         )
 
@@ -156,7 +156,7 @@ class ColoredReportFormatter(ReportFormatter):
 
     def format_default(self, record):
         record.msg = termui.decorate(
-            record.msg, *self.LOG_STYLES[record.levelname.lower()]
+            record.msg, *self.LOG_STYLES[record.levelname.lower()],
         )
         return super().format_default(record)
 
@@ -260,7 +260,7 @@ class ReportLogger(LoggerAdapter):
         return msg, kwargs
 
     def report(
-        self, activity, subject, context=None, target=None, nesting=None, level=INFO
+        self, activity, subject, context=None, target=None, nesting=None, level=INFO,
     ):
         """Log that an activity has occurred during scaffold.
 
@@ -340,7 +340,7 @@ class ReportLogger(LoggerAdapter):
         indentation consistent.
         """
         clone = self.__class__(
-            self.wrapped, self.handler, self.formatter, self.extra, self.propagate
+            self.wrapped, self.handler, self.formatter, self.extra, self.propagate,
         )
         clone.nesting = self.nesting
 

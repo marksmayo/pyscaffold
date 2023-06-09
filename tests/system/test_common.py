@@ -71,9 +71,8 @@ def test_putup_with_update(cwd, putup):
 
 def test_putup_with_update_dirty_workspace(cwd, putup):
     run(f"{putup} myproj")
-    with chdir("myproj"):
-        with open("setup.py", "w") as fh:
-            fh.write("DIRTY")
+    with chdir("myproj"), open("setup.py", "w") as fh:
+        fh.write("DIRTY")
     with pytest.raises(CalledProcessError):
         run(f"{putup} --update myproj")
     run(f"{putup} --update myproj --force")
@@ -232,7 +231,7 @@ def test_namespace_no_skeleton(cwd, putup):
     # when we call putup with --namespace and --no-skeleton
     run(
         f"{putup} nested_project --no-skeleton "
-        "-p my_package --namespace com.blue_yonder"
+        "-p my_package --namespace com.blue_yonder",
     )
     # then a very complicated module hierarchy should exist
     path = Path("nested_project/src/com/blue_yonder/my_package")
@@ -248,7 +247,7 @@ def test_new_project_does_not_fail_pre_commit(cwd, pre_commit, putup):
     name = "my_project"
     run(
         f"{putup} --pre-commit --cirrus --gitlab "
-        "-p my_package --namespace com.blue_yonder " + name
+        "-p my_package --namespace com.blue_yonder " + name,
     )
     with cwd.join(name).as_cwd():
         # then the newly generated files should not result in errors when

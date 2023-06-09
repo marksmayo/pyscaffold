@@ -174,14 +174,11 @@ def command_exists(cmd: str) -> bool:
     Args:
         cmd: executable name
     """
-    if shutil.which(cmd) is None:
-        return False
-    else:
-        return True
+    return not shutil.which(cmd) is None
 
 
 def get_executable(
-    name: str, prefix: PathLike = sys.prefix, include_path=True
+    name: str, prefix: PathLike = sys.prefix, include_path=True,
 ) -> Optional[str]:
     """Find an executable in the system, if available.
 
@@ -212,7 +209,7 @@ def get_executable(
 
 
 def get_command(
-    name: str, prefix: PathLike = sys.prefix, include_path=True, shell=True, **kwargs
+    name: str, prefix: PathLike = sys.prefix, include_path=True, shell=True, **kwargs,
 ) -> Optional[ShellCommand]:
     """Similar to :obj:`get_executable` but return an instance of :obj:`ShellCommand`
     if it is there to be found.
